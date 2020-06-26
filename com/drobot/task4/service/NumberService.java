@@ -32,7 +32,83 @@ public class NumberService {
         return max;
     }
 
-    public boolean isNumberNatural(int number) {
+    public CustomArray getNaturalNumbers(CustomArray customArray) {
+        int[] array = getArrayFromCustom(customArray);
+        int counter = 0;
+
+        for (int a : array) {
+            if (isNumberNatural(a)) {
+                counter++;
+            }
+        }
+
+        CustomArray result = new CustomArray(counter);
+        counter = 0;
+
+        for (int a : array) {
+            if (isNumberNatural(a)) {
+                result.setElement(a, counter);
+                counter++;
+            }
+        }
+        return result;
+    }
+
+    public CustomArray getFibonacciNumbers(CustomArray customArray) {
+        int[] array = getArrayFromCustom(customArray);
+        int counter = 0;
+
+        for (int a : array) {
+            if (isNumberFibonacci(a)) {
+                counter++;
+            }
+        }
+
+        CustomArray result = new CustomArray(counter);
+        counter = 0;
+
+        for (int a : array) {
+            if (isNumberFibonacci(a)) {
+                result.setElement(a, counter);
+                counter++;
+            }
+        }
+        return result;
+    }
+
+    public CustomArray getDifferentDigitsNumbers(CustomArray customArray) {
+        int[] array = getArrayFromCustom(customArray);
+        int counter = 0;
+
+        for (int a : array) {
+            if (!containsEqualDigits(a)) {
+                counter++;
+            }
+        }
+
+        CustomArray result = new CustomArray(counter);
+        counter = 0;
+
+        for (int a : array) {
+            if (!containsEqualDigits(a)) {
+                result.setElement(a, counter);
+                counter++;
+            }
+        }
+        return result;
+    }
+
+    public int[] getArrayFromCustom(CustomArray customArray) {
+        int[] array = new int[customArray.length()];
+
+        for (int i = 0; i < customArray.length(); i++) {
+            array[i] = customArray.getElement(i);
+        }
+
+        return array;
+    }
+
+    private boolean isNumberNatural(int number) {
         int var = 2;
         boolean isNatural;
 
@@ -54,17 +130,7 @@ public class NumberService {
         return isNatural;
     }
 
-    public int[] getArrayFromCustom(CustomArray customArray) {
-        int[] array = new int[customArray.length()];
-
-        for (int i = 0; i < customArray.length(); i++) {
-            array[i] = customArray.getElement(i);
-        }
-
-        return array;
-    }
-
-    public boolean isNumberFibonachi(int number) {
+    private boolean isNumberFibonacci(int number) {
         if (number == 0 || number == 1 || number == 2) {
             return true;
         }
@@ -86,7 +152,43 @@ public class NumberService {
         return false;
     }
 
-    public int getDigitsAmount(int number) {
+    private boolean containsEqualDigits(int number) {
+        boolean result = false;
+        int buffer;
+        int current;
+        int divider;
+        int n;
+        int digit;
+
+        for (int i = 1; i <= getDigitsAmount(number); i++) {
+            digit = getDigit(number, i - 1);
+            n = i + 1;
+
+            while (true) {
+                divider = (int) Math.pow(10, n);
+
+                if (number * 10 / divider == 0) {
+                    break;
+                }
+
+                buffer = number % divider;
+                current = buffer / (int) Math.pow(10, n - 1);
+
+                if (current == digit) {
+                    result = true;
+                    break;
+                } else {
+                    n++;
+                }
+            }
+            if (result) {
+                break;
+            }
+        }
+        return result;
+    }
+
+    private int getDigitsAmount(int number) {
         int n = 1;
         int divider = 10;
 
@@ -97,33 +199,8 @@ public class NumberService {
         return n;
     }
 
-    public boolean areDigitsEqual(int number) {
-        final int digit = number % 10;
-
-        boolean result;
-        int n = 2;
-        int current;
-        int buffer;
-        int divider;
-
-        while (true) {
-            divider = (int) Math.pow(10, n);
-
-            if (number / divider == 0) {
-                result = true;
-                break;
-            }
-
-            current = number % divider;
-            buffer = current / (int) Math.pow(10, n - 1);
-
-            if (buffer == digit) {
-                n++;
-            } else {
-                result = false;
-                break;
-            }
-        }
-        return result;
+    private int getDigit(int number, int position) {
+        return number % (int) Math.pow(10, position + 1)
+                / (int) Math.pow(10, position);
     }
 }

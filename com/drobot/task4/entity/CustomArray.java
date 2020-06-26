@@ -26,6 +26,10 @@ public class CustomArray {
         this.array = array;
     }
 
+    public void setElement(int element, int index) {
+        array[index] = element;
+    }
+
     public boolean isIndexCorrect(int index) {
         return index > 0 && index < array.length;
     }

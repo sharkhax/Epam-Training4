@@ -57,21 +57,81 @@ public class NumberServiceTest {
     }
 
     @Test
-    public void isNumberNatural_True() {
-        int number = 3;
+    public void getNaturalNumbers_True() {
+        int[] array = {2, 3, 5, 4, 10, 20};
+        int[] expectedArray = {2, 3, 5};
+        CustomArray customArray = new CustomArray(array);
         NumberService numberService = new NumberService();
-        boolean condition = numberService.isNumberNatural(number);
 
-        assertTrue(condition);
+        CustomArray actual = numberService.getNaturalNumbers(customArray);
+        CustomArray expected = new CustomArray(expectedArray);
+
+        assertEquals(actual, expected);
     }
 
     @Test
-    public void isNumberNatural_False() {
-        int number = 30;
+    public void getNaturalNumbers_False() {
+        int[] array = {2, 3, 5, 4, 10, 20};
+        int[] expectedArray = {2, 3, 5, 10};
+        CustomArray customArray = new CustomArray(array);
         NumberService numberService = new NumberService();
-        boolean condition = numberService.isNumberNatural(number);
 
-        assertFalse(condition);
+        CustomArray actual = numberService.getNaturalNumbers(customArray);
+        CustomArray expected = new CustomArray(expectedArray);
+
+        assertNotEquals(actual, expected);
+    }
+
+    @Test
+    public void getFibonacciNumbers_True() {
+        int[] array = {2, 3, 5, 4, 13, 20};
+        int[] expectedArray = {2, 3, 5, 13};
+        CustomArray customArray = new CustomArray(array);
+        NumberService numberService = new NumberService();
+
+        CustomArray actual = numberService.getFibonacciNumbers(customArray);
+        CustomArray expected = new CustomArray(expectedArray);
+
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void getFibonacciNumbers_False() {
+        int[] array = {2, 3, 5, 4, 13, 20};
+        int[] expectedArray = {2, 3, 5, 20};
+        CustomArray customArray = new CustomArray(array);
+        NumberService numberService = new NumberService();
+
+        CustomArray actual = numberService.getFibonacciNumbers(customArray);
+        CustomArray expected = new CustomArray(expectedArray);
+
+        assertNotEquals(actual, expected);
+    }
+
+    @Test
+    public void getDifferentDigitsNumbers_True() {
+        int[] array = {221, 312, 565, 480, 131, 230};
+        int[] expectedArray = {312, 480, 230};
+        CustomArray customArray = new CustomArray(array);
+        NumberService numberService = new NumberService();
+
+        CustomArray actual = numberService.getDifferentDigitsNumbers(customArray);
+        CustomArray expected = new CustomArray(expectedArray);
+
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void getDifferentDigitsNumbers_False() {
+        int[] array = {221, 312, 565, 480, 131, 230};
+        int[] expectedArray = {312, 480, 230, 131};
+        CustomArray customArray = new CustomArray(array);
+        NumberService numberService = new NumberService();
+
+        CustomArray actual = numberService.getDifferentDigitsNumbers(customArray);
+        CustomArray expected = new CustomArray(expectedArray);
+
+        assertNotEquals(actual, expected);
     }
 
     @Test
@@ -94,64 +154,6 @@ public class NumberServiceTest {
 
         int[] actual = numberService.getArrayFromCustom(customArray);
         int[] expected = {2, 3};
-
-        assertNotEquals(actual, expected);
-    }
-
-    @Test
-    public void isNumberFibonachi_True() {
-        NumberService numberService = new NumberService();
-        int number = 34;
-        boolean condition = numberService.isNumberFibonachi(number);
-
-        assertTrue(condition);
-    }
-
-    @Test
-    public void isNumberFibonachi_False() {
-        NumberService numberService = new NumberService();
-        int number = 30;
-        boolean condition = numberService.isNumberFibonachi(number);
-
-        assertFalse(condition);
-    }
-
-    @Test
-    public void areDigitsEqual_True() {
-        NumberService numberService = new NumberService();
-        int number = 3333;
-        boolean condition = numberService.areDigitsEqual(number);
-
-        assertTrue(condition);
-    }
-
-    @Test
-    public void areDigitsEqual_False() {
-        NumberService numberService = new NumberService();
-        int number = 33000033;
-        boolean condition = numberService.areDigitsEqual(number);
-
-        assertFalse(condition);
-    }
-
-    @Test
-    public void getDigitsAmount_True() {
-        NumberService numberService = new NumberService();
-        int number = 1;
-
-        int actual = numberService.getDigitsAmount(number);
-        int expected = 1;
-
-        assertEquals(actual, expected);
-    }
-
-    @Test
-    public void getDigitsAmount_False() {
-        NumberService numberService = new NumberService();
-        int number = 0;
-
-        int actual = numberService.getDigitsAmount(number);
-        int expected = 0;
 
         assertNotEquals(actual, expected);
     }
