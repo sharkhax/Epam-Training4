@@ -18,7 +18,7 @@ public class CustomArray {
         return array[index];
     }
 
-    public int length() { // TODO можно ли такое название?
+    public int length() {
         return array.length;
     }
 
