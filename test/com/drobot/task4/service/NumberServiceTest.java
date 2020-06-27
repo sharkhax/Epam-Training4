@@ -9,48 +9,48 @@ import static org.testng.Assert.*;
 public class NumberServiceTest {
 
     @Test
-    public void findMinElement_True() {
+    public void min_True() {
         int[] array = {5, 6, 1, 3};
         CustomArray customArray = new CustomArray(array);
         NumberService numberService = new NumberService();
 
-        int actual = numberService.findMinElement(customArray);
+        int actual = numberService.min(customArray);
         int expected = 1;
 
         assertEquals(actual, expected);
     }
 
     @Test
-    public void findMinElement_False() {
+    public void min_False() {
         int[] array = {5, 6, 1, 3};
         CustomArray customArray = new CustomArray(array);
         NumberService numberService = new NumberService();
 
-        int actual = numberService.findMinElement(customArray);
+        int actual = numberService.min(customArray);
         int expected = 6;
 
         assertNotEquals(actual, expected);
     }
 
     @Test
-    public void findMaxElement_True() {
+    public void max_True() {
         int[] array = {5, 6, 1, 3};
         CustomArray customArray = new CustomArray(array);
         NumberService numberService = new NumberService();
 
-        int actual = numberService.findMaxElement(customArray);
+        int actual = numberService.max(customArray);
         int expected = 6;
 
         assertEquals(actual, expected);
     }
 
     @Test
-    public void findMaxElement_False() {
+    public void max_False() {
         int[] array = {5, 6, 1, 3};
         CustomArray customArray = new CustomArray(array);
         NumberService numberService = new NumberService();
 
-        int actual = numberService.findMaxElement(customArray);
+        int actual = numberService.max(customArray);
         int expected = 1;
 
         assertNotEquals(actual, expected);

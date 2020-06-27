@@ -5,7 +5,6 @@ import com.drobot.task4.entity.CustomArray;
 public class SearchService {
 
     public int binarySearch(CustomArray customArray, int key) {
-
         int result;
         int[] array = new int[customArray.length()];
 

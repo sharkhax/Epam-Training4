@@ -4,7 +4,7 @@ import com.drobot.task4.entity.CustomArray;
 
 public class NumberService {
 
-    public int findMinElement(CustomArray customArray) {
+    public int min(CustomArray customArray) {
         int min = customArray.getElement(0);
 
         for (int i = 1; i < customArray.length(); i++) {
@@ -18,7 +18,7 @@ public class NumberService {
         return min;
     }
 
-    public int findMaxElement(CustomArray customArray) {
+    public int max(CustomArray customArray) {
         int max = customArray.getElement(0);
 
         for (int i = 1; i < customArray.length(); i++) {
@@ -181,6 +181,7 @@ public class NumberService {
                     n++;
                 }
             }
+
             if (result) {
                 break;
             }
